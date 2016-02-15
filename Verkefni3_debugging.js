@@ -53,12 +53,12 @@ var obj = {
    }
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname());//Þetta loggar "Aurelio De Rosa"
 
 var test = obj.prop.getFullname;
 
-console.log(test());
-
+console.log(test());//þetta loggar "John Doe"
+//Ástæðan fyrir þessu er að test er skilgreint sem functioninn sjálfur og þar af leiðani verður this global, valdandi því að "John Doe" er eina fullname breyta sem test þekkir
 
 // 5.  
 // Notaðu hér fyrir neðan "use strict" á viðeigandi stað og jshint þér til hjálpar
@@ -74,11 +74,14 @@ canYouSpotTheProblem();
 // 6. 
 //a) hver er villan, b) afhverju er villa, c) lagaðu hana
 function Person(name) { this.name = name; }
-var ferdinand = Person("Ferdinand"); 
-console.log(name); 
+var ferdinand = Person("Ferdinand"); //villan er hérna, það vantar new fyrir framan person þannig að creatorinn er ekki invokaður og this vísar í sjálfan person functioninn
+console.log(name);
+console.log(ferdinand.name); //þetta loggast ekki vegna þess að objectinn heitir ekki ferdinard, heldur person
+//Lagaður kóði
+function Person(name) { this.name = name; }
+var ferdinand = new Person("Ferdinand"); 
+console.log(name);//hérna loggast name ekki, vegna þess að núna er það skilgreint sem ferdinard
 console.log(ferdinand.name); 
-//
-
 // 7. 
 // Convert a whole number to a string in any base (decimal, binary, and so on) 
 // a) Reyndu að greina kóðann t.d. með að setja console.log() í kóðann til að fá frekari upplýsingar
@@ -97,7 +100,7 @@ function numberToString(n, base) {
   return sign + result;
 }
 console.log(numberToString(13, 10)); // → 1.5e-3231.3e-3221.3e-3211.3e-3201.3e-3191.3e-3181.3…
-
+//Hérna er forritarinn hálfviti og veit ekki að það er til innbyggð aðferð fyrir þetta sem virkar fullkomlega ".toString()"
 
 // 8. 
 // Útskýrðu notkun á isNaN í kóðanum, afhverju að gera þetta?
@@ -108,7 +111,7 @@ function promptNumber(question) {
 }
 
 console.log(promptNumber("How many trees do you see?")); 
-
+//Skilar til baka null ef að notandinn setti ekki inn tölu
 
 // 9. 
 //  Útskýrðu hvernig try og catch virkar hér í kóðanum, 
@@ -133,7 +136,7 @@ try {
 } catch (error) {
   console.log("Something went wrong: " + error);
 }
-
+//Hérna er hann notaður til þess að grípa villuna sem að promptdirection býr til ef að notandinn setur ekki inn annaðhvort right eða left
 
 /*
 Skil á verkefni:
