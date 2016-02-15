@@ -12,16 +12,18 @@
 // 1. 2% 
 // Discover DevTools, kláraðu Level 1- 4
 // https://www.codeschool.com/courses/discover-devtools
-
+//done
 
 // 2. - Scope
 // Hvað prentast í console og afhverju
 (function() {
    var a = b = 5;
+   console.log(a);
+   console.log(b);
 })();
 
 console.log(b);
-
+//Það prentst út heiltalan 5, efst er iffy, ástæðan fyrir því að b er til utan scope er að það er ekki skilgreint með var, þannig að það verður global
 
 // 3. - Hoisting
 // Hver er niðurstaðan og afhverju
@@ -36,6 +38,7 @@ function test() {
 }
 
 test();
+//Functions eru skilgreind fyrst og a er ekki til þegar að kallað er á það í functioninum, foo er hinsvegar til, vegna þess að það er interpretað fyrst
 
 // 4. - this
 // Hver er niðurstaðan, útskýrðu svar
@@ -65,6 +68,7 @@ function canYouSpotTheProblem() {
     console.log("Happy happy");
 }
 canYouSpotTheProblem();
+//vandamálið er að það er ekki notað var til þess að skilgreina counter og það eru ekki bracket í kringum for lykkjuna
 
 
 // 6. 
@@ -73,7 +77,7 @@ function Person(name) { this.name = name; }
 var ferdinand = Person("Ferdinand"); 
 console.log(name); 
 console.log(ferdinand.name); 
-
+//
 
 // 7. 
 // Convert a whole number to a string in any base (decimal, binary, and so on) 
